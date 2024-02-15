@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        h2, p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1 align="center">Ты попал на страницу cоздания поста в telegram </h1>
+    <form action="success" method="post" enctype="multipart/form-data">
+        {{ form.as_p }}
+        <br>
+        {% for iterator in path %}
+            <div>
+                <h2>{{ iterator.file_path }}</h2>
+                <p>{{ iterator.description }}</p>
+            </div>
+        {% endfor %}
+        <h3>Имена пользователей для рассылки</h3>
+        <input type="text" name="username1" placeholder="Имя пользователя1">
+        <input type="text" name="username2" placeholder="Имя пользователя2">
+        <input type="text" name="username3" placeholder="Имя пользователя3">
+        <input type="text" name="username4" placeholder="Имя пользователя4">
+        <input type="text" name="username5" placeholder="Имя пользователя5">
+        <br>
+        {% csrf_token %}
+        <input type="submit" value="Отправить в Telegram">
+    </form>
+</body>
+<style>
+    .green-text {
+        color: green;
+    }
+</style>
+<br><h2 class="green-text", align = "center">{{uspeh}}</h2>
+</html>
